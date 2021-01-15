@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompaniesController;
-// use App\Models\Companies;
+use App\Models\Companies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
