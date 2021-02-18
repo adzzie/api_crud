@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\CompanyController;
 use App\Models\Companies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,11 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get('companies', [CompaniesController::class, 'index'])->name('companies.index');
-// Route::post('companies', [CompaniesController::class, 'store'])->name('companies.store');
-// Route::get('companies/{company}', [CompaniesController::class, 'show'])->name('companies.show');
-// Route::put('companies/{company}', [CompaniesController::class, 'update'])->name('companies.update');
-// Route::delete('companies/{company}', [CompaniesController::class, 'destroy'])->name('companies.destroy');
+// Route::get('company', [CompanyController::class, 'index'])->name('company.index');
+// Route::post('company', [CompanyController::class, 'store'])->name('company.store');
+// Route::get('company/{company}', [CompanyController::class, 'show'])->name('company.show');
+// Route::put('company/{company}', [CompanyController::class, 'update'])->name('company.update');
+// Route::delete('company/{company}', [CompanyController::class, 'destroy'])->name('company.destroy');
 
-Route::model('company', Companies::class);
-Route::apiResource('companies', CompaniesController::class);
+// Route::model('company', Companies::class);
+Route::apiResource('company', CompanyController::class);

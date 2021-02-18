@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Companies;
-use Exception;
-use Illuminate\Contracts\Debug\ExceptionHandler;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use Throwable;
 
-class CompaniesController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +16,7 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        return response()->json(Companies::paginate(10), Response::HTTP_OK);
+        return response()->json(Company::paginate(10), Response::HTTP_OK);
     }
 
     /**
@@ -40,31 +36,29 @@ class CompaniesController extends Controller
         if($validator->fails()){
             return response()->json(['message'=>$validator->errors()], Response::HTTP_BAD_REQUEST);
         }
-        Companies::create($request->all());
+        Company::create($request->all());
         return response()->json(null, Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Companies  $companies
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Companies $companies)
+    public function show(Company $company)
     {
-
-        return response()->json($companies, Response::HTTP_OK);
-
+        return response()->json($company, Response::HTTP_OK);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Companies  $companies
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Companies $companies)
+    public function update(Request $request, Company $company)
     {
         // Validation
         $rules=[
@@ -75,19 +69,19 @@ class CompaniesController extends Controller
         if($validator->fails()){
             return response()->json(['message'=>$validator->errors()], Response::HTTP_BAD_REQUEST);
         }
-        $companies->update($request->all());
+        $company->update($request->all());
         return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Companies  $companies
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Companies $companies)
+    public function destroy(Company $company)
     {
-        $companies->delete();
+        $company->delete();
         return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }
